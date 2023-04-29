@@ -34,4 +34,5 @@ jobs:
       - name: Keep only last 10 tags
         id: delete-tag
         run: |
+          git --version
           /usr/bin/git tag -l --sort=-v:refname | grep ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
