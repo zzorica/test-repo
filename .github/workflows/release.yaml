@@ -36,6 +36,4 @@ jobs:
       - name: Keep only last 10 tags
         id: delete-tag
         run: |
-          for i in `git tag -l --sort=-v:refname | grep ${{ github.ref_name == 'main' && 'production' || github.ref_name }} | tail -n +5`; do \
-          echo $i; \
-          done
+          for i in `git tag -l --sort=-v:refname | grep ${{ github.ref_name == 'main' && 'production' || github.ref_name }} | tail -n +5`; do git push --delete origin $i; done
