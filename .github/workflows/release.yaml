@@ -37,5 +37,4 @@ jobs:
         id: delete-tag
         run: |
           git --version
-          git fetch all
           git tag -l
