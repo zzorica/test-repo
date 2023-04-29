@@ -30,3 +30,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release_branches: main,dev,staging
           tag_prefix: ${{ github.ref_name }}
+          create_annotated_tag: true
