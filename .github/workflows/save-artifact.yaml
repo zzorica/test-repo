@@ -1,0 +1,32 @@
+name: Test saving a value into artifact
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - 'README.md'
+      - '**/README.md'
+      - 'LICENSE'
+      - '.github/*'
+
+jobs:
+  save-artifact:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set message-id variable
+        run: |
+          echo "1" > message-id.txt
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: message-id-${{ github.ref }}
+          path: message-id-txt
