@@ -1,10 +1,10 @@
-name: Test saving a value into artifact
+name: Test loading a value into artifact
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - '*'
+      - 'main'
     paths-ignore:
       - 'README.md'
       - '**/README.md'
@@ -12,7 +12,7 @@ on:
       - '.github/*'
 
 jobs:
-  save-artifact:
+  load-artifact:
     runs-on: ubuntu-latest
     permissions:
       contents: write
