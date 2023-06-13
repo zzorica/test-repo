@@ -30,3 +30,9 @@ jobs:
         with:
           name: message-id-${{ github.head_ref }}
           path: message-id.txt
+
+      - name: Save value to cache
+        uses: actions/cache@v2
+        with:
+          key: message-id-${{ github.head_ref }}
+          path: message-id.txt
