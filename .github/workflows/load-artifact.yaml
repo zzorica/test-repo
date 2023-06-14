@@ -39,6 +39,10 @@ jobs:
 
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
+
+      - uses: tonynguyenit18/github-action-custom-vars@v1
+      - run: echo $RECENT_MERGED_BRANCH_NAME
+
       - name: Retrieve value from cache
         uses: actions/cache@v3
         id: cache
