@@ -36,6 +36,7 @@ jobs:
           echo "Pull Request Branch: $BRANCH_NAME"
 
       - uses: tonynguyenit18/github-action-custom-vars@v1
+
       - run: echo $RECENT_MERGED_BRANCH_NAME
 
       - name: Retrieve value from cache
