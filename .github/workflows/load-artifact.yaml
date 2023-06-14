@@ -26,20 +26,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Get pull request number and branch name
-        id: branch-name
-        run: |
-          COMMIT_HASH=${{ github.sha }}
-          REPO=${{ github.repository }}
-
-          PULL_REQUEST_NUMBER=$(curl -s "https://api.github.com/repos/$REPO/commits/$COMMIT_HASH/pulls" \
-            | jq -r '.[0].number')
-          BRANCH_NAME=$(curl -s "https://api.github.com/repos/$REPO/commits/$COMMIT_HASH" \
-            | jq -r '.commit.tree.sha')
-
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
-
-
       - uses: tonynguyenit18/github-action-custom-vars@v1
       - run: echo $RECENT_MERGED_BRANCH_NAME
 
@@ -47,7 +33,7 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          key: message-id-${{ steps.branch-name.outputs.branch_name }}
+          key: message-id-${{ RECENT_MERGED_BRANCH_NAME }}
           path: message-id.txt
 
       - name: Use retrieved value
