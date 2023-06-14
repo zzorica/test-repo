@@ -34,10 +34,12 @@ jobs:
             | jq --raw-output .head.ref)
           echo "Pull Request Branch: $BRANCH_NAME"
 
+      - uses: 8BitJonny/gh-get-current-pr@2.2.0
+        id: PR
+
       - name: test
         run: |
-          echo $GITHUB_EVENT_PATH
-          cat $GITHUB_EVENT_PATH
+          echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
 
       - uses: tonynguyenit18/github-action-custom-vars@v1
 
