@@ -30,8 +30,8 @@ jobs:
         run: |
           echo "3008984" > message-id.txt
 
-      - name: Save value to cache
-        uses: actions/cache@v3
+      - name: Save value to artifact
+        uses: actions/upload-artifact@v3
         with:
-          key: message-id-${{ github.event.number }}
+          name: message-id-${{ github.event.number }}
           path: message-id.txt

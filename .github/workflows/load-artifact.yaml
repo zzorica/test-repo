@@ -33,11 +33,11 @@ jobs:
         run: |
           echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
 
-      - name: Retrieve value from cache
-        uses: actions/cache@v3
+      - name: Retrieve value from artifact
+        uses: actions/download-artifact@v3
         id: cache
         with:
-          key: message-id-${{ steps.PR.outputs.number }}
+          name: message-id-${{ steps.PR.outputs.number }}
           path: message-id.txt
 
       - name: Use retrieved value
