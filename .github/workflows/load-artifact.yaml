@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          key: message-id-${{ RECENT_MERGED_BRANCH_NAME }}
+          key: message-id-${{ env.RECENT_MERGED_BRANCH_NAME }}
           path: message-id.txt
 
       - name: Use retrieved value
