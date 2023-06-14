@@ -28,16 +28,10 @@ jobs:
 
       - name: Set message-id variable
         run: |
-          echo "1" > message-id.txt
-
-      - name: Create Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: message-id-${{ github.head_ref }}
-          path: message-id.txt
+          echo "3008984" > message-id.txt
 
       - name: Save value to cache
         uses: actions/cache@v3
         with:
-          key: message-id-${{ github.head_ref }}
+          key: message-id-${{ github.event.number }}
           path: message-id.txt
