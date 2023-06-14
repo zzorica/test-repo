@@ -38,6 +38,7 @@ jobs:
       - name: test
         run: |
           echo $GITHUB_EVENT_PATH
+          cat $GITHUB_EVENT_PATH
 
       - uses: tonynguyenit18/github-action-custom-vars@v1
 
