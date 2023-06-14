@@ -35,6 +35,10 @@ jobs:
             | jq --raw-output .head.ref)
           echo "Pull Request Branch: $BRANCH_NAME"
 
+      - name: test
+        run: |
+          echo $GITHUB_EVENT_PATH
+
       - uses: tonynguyenit18/github-action-custom-vars@v1
 
       - run: echo $RECENT_MERGED_BRANCH_NAME
